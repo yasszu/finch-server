@@ -1,4 +1,4 @@
-name := "finch-project"
+name := "finch-server"
 
 version := "1.0"
 
