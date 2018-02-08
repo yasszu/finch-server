@@ -1,6 +1,6 @@
 package app.utils
 
-object DSL {
+object DDL {
 
   val createUsersTable =
     """CREATE TABLE IF NOT EXISTS `users` (

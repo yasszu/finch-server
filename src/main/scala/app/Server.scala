@@ -3,7 +3,7 @@ package app
 import java.net.InetSocketAddress
 
 import app.apis.UserApi
-import app.utils.DSL
+import app.utils.DDL
 import com.twitter.finagle.mysql._
 import com.twitter.finagle.{Http, Mysql}
 import com.twitter.server.TwitterServer
@@ -28,7 +28,7 @@ object Server extends TwitterServer {
   lazy val userApi = UserApi()
 
   def createTables()(implicit client: Client): Future[Result] = {
-    client.query(DSL.createUsersTable)
+    client.query(DDL.createUsersTable)
   }
 
   def main() {
