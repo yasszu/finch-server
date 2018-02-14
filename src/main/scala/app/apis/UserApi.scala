@@ -12,7 +12,9 @@ class UserApi()(implicit val client: Client) {
     * GET /users
     */
   private val getUsers: Endpoint[Seq[User]] = get("users") {
-    User.findAll() map { users => Ok(users) }
+    User.findAll() map { users =>
+      Ok(users)
+    }
   } handle {
     case e: Exception => InternalServerError(e)
   }

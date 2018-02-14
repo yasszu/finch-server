@@ -5,7 +5,7 @@
 2. Start server
 
     ``` 
-    $ sbt 'run-main app.Server -db.name=dbname -db.user=username -db.password=password'
+    $ sbt 'run-main app.Server'
     ```
     
 ## Deploy application
