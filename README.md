@@ -1,12 +1,17 @@
 # REST APIs with Finagle
 ## Getting Started
 
-1. Create a Database (MySQL)  
-2. Start server
+* Create a Database on MySQL
 
-    ``` 
-    $ sbt 'run-main app.Server'
-    ```
+```sql                                             
+CREATE SCHEMA IF NOT EXISTS `web_crawler` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
+* Start server
+
+``` 
+$ sbt 'run-main app.Server'
+```
     
 ## Deploy application
 * Create a JAR file
