@@ -8,11 +8,13 @@ import io.finch.circe._
 
 class UserApi()(implicit val client: Client) {
 
+  val page: Endpoint[Page] = (param("page").as[Int] :: param("count").as[Int]).as[Page]
+
   /**
     * GET /users
     */
-  private val getUsers: Endpoint[Seq[User]] = get("users") {
-    User.findAll() map { users =>
+  private val getUsers: Endpoint[Seq[User]] = get("users" :: page) { p: Page =>
+    User.findAll(p.page, p.count) map { users =>
       Ok(users)
     }
   } handle {

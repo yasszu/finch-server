@@ -27,13 +27,13 @@ $ java -jar target/scala-2.12/finch-server-assembly-1.0.jar &
 ### GET /user/:id
 
 ```
-$ curl -i -X GET http://localhost:8080/user/:id
+$ curl -i -X GET 'http://localhost:8080/user/1'
 ```
 
-### GET /users
+### GET /users?page=0&count=3
 
 ```
-$ curl -i -X GET http://localhost:8080/users
+$ curl -i -X GET 'http://localhost:8080/users?page=0&count=3'
 ```
 
 ### POST /user

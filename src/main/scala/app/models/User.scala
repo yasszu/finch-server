@@ -13,8 +13,8 @@ case class User(
 
 object User {
 
-  def findAll()(implicit client: Client): Future[Seq[User]] = {
-    val sql = "SELECT * FROM users u WHERE u.del_flg = 0 ORDER BY u.id DESC LIMIT 0, 1000"
+  def findAll(page: Int = 0, limit: Int = 100)(implicit client: Client): Future[Seq[User]] = {
+    val sql = s"SELECT * FROM users u WHERE u.del_flg = 0 ORDER BY u.id DESC LIMIT $page, $limit"
     client.select(sql) { row =>
       val LongValue(id) = row("id").get
       val StringValue(name) = row("name").get
