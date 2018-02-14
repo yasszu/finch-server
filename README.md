@@ -7,6 +7,20 @@
     ``` 
     $ sbt 'run-main app.Server -db.name=dbname -db.user=username -db.password=password'
     ```
+    
+## Deploy application
+* Create a JAR file
+
+```
+$ sbt assembly
+
+```
+
+* Run process
+
+```
+$ java -jar target/scala-2.12/finch-server-assembly-1.0.jar &
+```    
 
 ## Requests     
 

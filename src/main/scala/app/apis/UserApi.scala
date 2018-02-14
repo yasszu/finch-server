@@ -74,5 +74,7 @@ class UserApi()(implicit val client: Client) {
 }
 
 object UserApi {
+
   def apply()(implicit client: Client): UserApi = new UserApi()(client)
+
 }
