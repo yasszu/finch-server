@@ -5,8 +5,22 @@
 2. Start server
 
     ``` 
-    $ sbt 'run-main app.Server -db.name=dbname -db.user=username -db.password=password'
+    $ sbt 'run-main app.Server'
     ```
+    
+## Deploy application
+* Create a JAR file
+
+```
+$ sbt assembly
+
+```
+
+* Run process
+
+```
+$ java -jar target/scala-2.12/finch-server-assembly-1.0.jar &
+```    
 
 ## Requests     
 
