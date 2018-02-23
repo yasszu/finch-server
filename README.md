@@ -1,4 +1,4 @@
-# REST APIs with Finagle
+# Example of RESTful API Server with Finch
 ## Getting Started
 
 * Create a Database on MySQL
