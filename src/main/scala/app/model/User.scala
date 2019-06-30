@@ -1,4 +1,4 @@
-package app.models
+package app.model
 
 import com.twitter.finagle.mysql.Client
 import com.twitter.finagle.mysql._

@@ -2,8 +2,8 @@ package app
 
 import java.net.InetSocketAddress
 
-import app.apis.UserApi
-import app.utils._
+import app.controller.UserController
+import app.util._
 import com.twitter.finagle.mysql._
 import com.twitter.finagle.{Http, Mysql}
 import com.twitter.server.TwitterServer
@@ -30,14 +30,14 @@ object Server extends TwitterServer {
     .withDatabase(db)
     .newRichClient("%s:%d".format(url.getHostName, url.getPort))
 
-  lazy val userApi = UserApi()
+  lazy val userController = UserController()
 
   def createTables()(implicit client: Client): Future[Result] = {
     client.query(DDL.createUsersTable)
   }
 
   def main() {
-    val server = Http.server.serve(":8080", userApi.endpoints.toService)
+    val server = Http.server.serve(":8080", userController.endpoints.toService)
     onExit{
       server.close()
     }
