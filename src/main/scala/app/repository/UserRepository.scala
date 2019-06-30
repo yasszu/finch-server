@@ -6,7 +6,7 @@ import com.twitter.util.Future
 
 trait UserRepository {
 
-  def findAll(page: Int = 0, limit: Int = 100)(implicit client: Client): Future[Seq[User]]
+  def findAll(page: Int, limit: Int)(implicit client: Client): Future[Seq[User]]
 
   def find(userId: Long)(implicit client: Client): Future[Option[User]]
 
