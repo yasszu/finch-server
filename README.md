@@ -10,7 +10,7 @@
 2. Start a server
 
     ``` 
-    $ sbt 'run-main app.Server'
+    $ sbt 'run-main app.ApiServer'
     ```
     
 ## Deploy application

@@ -1,6 +1,6 @@
 package app.controller
 
-import app.model.{Page, User, UserParam}
+import app.model.{Page, User}
 import app.repository.{UserRepository, UserRepositoryImpl}
 import com.twitter.finagle.mysql._
 import io.circe.generic.auto._
@@ -43,9 +43,9 @@ class UserController(val userRepository: UserRepository)(implicit val client: Cl
   /**
     * POST /user
     */
-  private val postUser: Endpoint[User] = post("user" :: jsonBody[UserParam]) { up: UserParam =>
+  private val postUser: Endpoint[User] = post("user" :: jsonBody[User]) { u: User =>
     (for {
-      userId <- userRepository.create(up.name, up.email, up.comment)
+      userId <- userRepository.create(u.name, u.email, u.comment)
       user <- userRepository.find(userId)
     } yield user) map {
       case Some(user) => Ok(user)
@@ -58,9 +58,9 @@ class UserController(val userRepository: UserRepository)(implicit val client: Cl
   /**
     * PUT /user/:id
     */
-  private val putUser: Endpoint[User] = put("user" :: path[Long] :: jsonBody[UserParam]) { (id: Long, up: UserParam) =>
+  private val putUser: Endpoint[User] = put("user" :: path[Long] :: jsonBody[User]) { (id: Long, u: User) =>
     (for {
-      _ <- userRepository.update(id, up.name, up.email, up.comment)
+      _ <- userRepository.update(id, u.name, u.email, u.comment)
       user <- userRepository.find(id)
     } yield user) map {
       case Some(user) => Ok(user)
