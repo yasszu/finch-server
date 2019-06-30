@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  mysql:
+    container_name: finagle-server_mysql
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'finagle-server'
+      TZ: 'Asia/Tokyo'
+    command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci', '--ft_min_word_len=2', '--innodb_ft_min_token_size=2', '--sql-mode=STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION']
+    volumes:
+      - mysqlvol:/var/lib/mysql
+    ports:
+      - "3306:3306"
+volumes:
+  mysqlvol:
+    driver: local
