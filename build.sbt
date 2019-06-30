@@ -7,6 +7,7 @@ version := "1.0"
 scalaVersion := "2.12.4"
 
 libraryDependencies ++= Seq(
+  "ch.qos.logback" % "logback-classic" % "1.2.3",
   "com.typesafe" % "config" % "1.3.1",
   "com.twitter" %% "finagle-http" % "17.12.0",
   "com.twitter" %% "finagle-mysql" % "17.12.0",
