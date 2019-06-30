@@ -1,13 +1,12 @@
-# Example of RESTful API Server with Finch
+# Example of RESTful API Server with [Finch](https://finagle.github.io/finch/)
 ## Getting Started
 
 1. Start a MySQL server  
     ```
-    $ docker-compose up
-    
+    $ docker-compose up -d    
     ```
 
-2. Start a server
+2. Start the API server
 
     ``` 
     $ sbt 'run-main app.ApiServer'
@@ -30,34 +29,34 @@
 ## Requests     
 
 ### POST /user
-    
-    ```
-    $ curl -i -X POST http://localhost:8080/user -d '{"name":"test","email":"sample@test.com","comment":"testtesttest"}'
-    ```
+
+```
+$ curl -i -X POST http://localhost:8080/user -d '{"name":"test","email":"sample@test.com","comment":"testtesttest"}'
+```
 
 ### GET /user/:id
-    
-    ```
-    $ curl -i -X GET 'http://localhost:8080/user/1'
-    ```
+
+```
+$ curl -i -X GET 'http://localhost:8080/user/1'
+```
 
 ### GET /users?page=0&count=3
-    
-    ```
-    $ curl -i -X GET 'http://localhost:8080/users?page=0&count=3'
-    ```
+
+```
+$ curl -i -X GET 'http://localhost:8080/users?page=0&count=3'
+```
 
 ### PUT /user/:id
 
-    ```
-    $ curl -i -X PUT \
-      http://localhost:8080/user/:id \
-      -H 'content-type: application/json' \
-      -d '{"name":"ABC","email":"ABC@test.com","comment":"testtesttest"}'
-    ```
+```
+$ curl -i -X PUT \
+  http://localhost:8080/user/:id \
+  -H 'content-type: application/json' \
+  -d '{"name":"ABC","email":"ABC@test.com","comment":"testtesttest"}'
+```
 
 ### DELETE /user/:id
 
-    ```
-    $ curl -i -X DELETE http://localhost:8080/user/:id
-    ```
+```
+$ curl -i -X DELETE http://localhost:8080/user/:id
+```
