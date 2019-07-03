@@ -1,19 +1,18 @@
 package app.repository
 
 import app.model.User
-import com.twitter.finagle.mysql.Client
 import com.twitter.util.Future
 
 trait UserRepository {
 
-  def findAll(page: Int, limit: Int)(implicit client: Client): Future[Seq[User]]
+  def findAll(page: Int, limit: Int): Future[Seq[User]]
 
-  def find(userId: Long)(implicit client: Client): Future[Option[User]]
+  def find(userId: Long): Future[Option[User]]
 
-  def create(name: String, email: String, comment: String)(implicit client: Client): Future[Long]
+  def create(name: String, email: String, comment: String): Future[Long]
 
-  def update(userId: Long, name: String, email: String, comment: String)(implicit client: Client): Future[Long]
+  def update(userId: Long, name: String, email: String, comment: String): Future[Long]
 
-  def delete(userId: Long)(implicit client: Client): Future[Long]
+  def delete(userId: Long): Future[Long]
 
 }
