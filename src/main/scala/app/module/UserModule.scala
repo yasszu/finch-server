@@ -1,4 +1,4 @@
-package app.di
+package app.module
 
 import app.repository.{UserRepository, UserRepositoryImpl}
 import com.google.inject.Provides
@@ -8,7 +8,7 @@ import javax.inject.Singleton
 
 object UserModule extends TwitterModule {
 
-  override val modules = Seq(AppModule)
+  override val modules = Seq(MySqlClientModule)
 
   @Singleton
   @Provides

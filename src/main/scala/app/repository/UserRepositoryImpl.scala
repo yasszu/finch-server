@@ -4,8 +4,9 @@ import app.model.User
 import com.twitter.finagle.mysql.Client
 import com.twitter.finagle.mysql._
 import com.twitter.util.Future
+import javax.inject.Inject
 
-class UserRepositoryImpl(val client: Client) extends UserRepository {
+class UserRepositoryImpl @Inject()(client: Client) extends UserRepository {
 
   def findAll(page: Int = 0, limit: Int = 100): Future[Seq[User]] = {
     client.select(s"SELECT * FROM users u WHERE u.del_flg = 0 ORDER BY u.id DESC LIMIT $page, $limit") { row =>
