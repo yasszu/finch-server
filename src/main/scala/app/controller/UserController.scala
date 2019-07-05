@@ -3,9 +3,9 @@ package app.controller
 import app.repository.UserRepository
 import com.twitter.finagle.http.Request
 import com.twitter.finatra.http._
-import javax.inject.Inject
+import javax.inject.{Inject, Singleton}
 
-
+@Singleton
 class UserController @Inject()(repository: UserRepository) extends Controller {
 
   get("/") { request: Request =>

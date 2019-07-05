@@ -10,9 +10,7 @@ object Main extends UserServer
 
 class UserServer extends HttpServer {
 
-  override val modules  = Seq(
-    AppModule,
-    UserModule)
+  override val modules  = Seq(UserModule)
 
   override protected def configureHttp(router: HttpRouter): Unit = {
     router

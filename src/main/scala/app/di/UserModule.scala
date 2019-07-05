@@ -2,18 +2,18 @@ package app.di
 
 import app.repository.{UserRepository, UserRepositoryImpl}
 import com.google.inject.Provides
-import com.twitter.finagle.mysql._
 import com.twitter.inject.TwitterModule
+import io.getquill.{FinagleMysqlContext, SnakeCase}
 import javax.inject.Singleton
 
 object UserModule extends TwitterModule {
 
-  override val modules = Seq(AppModule)
+  override val modules = Seq(QuillContextModule)
 
   @Singleton
   @Provides
-  def providesUserRepository(client: Client): UserRepository = {
-    new UserRepositoryImpl(client)
+  def providesUserRepository(ctx: FinagleMysqlContext[SnakeCase]): UserRepository = {
+    new UserRepositoryImpl(ctx)
   }
 
 }
