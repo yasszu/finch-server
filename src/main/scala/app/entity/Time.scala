@@ -1,3 +1,3 @@
-package app.model
+package app.entity
 
 case class Time(locale: Locale, time: String)

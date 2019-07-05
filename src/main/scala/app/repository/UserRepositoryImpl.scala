@@ -1,20 +1,31 @@
 package app.repository
 
-import app.model.User
+import app.entity.User
+import app.scheme.Users
 import com.twitter.util.Future
 import io.getquill._
 import javax.inject.{Inject, Singleton}
 
 @Singleton
-class UserRepositoryImpl @Inject() (ctx: FinagleMysqlContext[SnakeCase]) extends UserRepository {
+class UserRepositoryImpl @Inject()(ctx: FinagleMysqlContext[SnakeCase]) extends UserRepository {
 
   import ctx._
 
-  override def findAll(page: Int, limit: Int): Future[Seq[User]] = ???
+  override def findAll(page: Int, limit: Int): Future[Seq[User]] = {
+    val q = quote {
+      query[Users]
+        .map(u => User(u.id, u.name, u.email, u.comment))
+        .drop(lift(page))
+        .take(lift(limit))
+    }
+    ctx.run(q)
+  }
 
   override def find(userId: Long): Future[Option[User]] = {
     val q = quote {
-      query[User].filter(u => u.id == lift(userId))
+      query[Users]
+        .filter(u => u.id == lift(userId))
+        .map(u => User(u.id, u.name, u.email, u.comment))
     }
     ctx.run(q).map(_.headOption)
   }

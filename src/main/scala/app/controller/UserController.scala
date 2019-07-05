@@ -18,9 +18,8 @@ class UserController @Inject()(repository: UserRepository) extends Controller {
       case Some(user) => response.ok(user)
       case None => response.notFound(new Exception("Not Found"))
     } handle {
-      case e: Exception => response.internalServerError(e)
+      case e: Exception  => response.internalServerError(e.getMessage)
     }
-
   }
 
 }

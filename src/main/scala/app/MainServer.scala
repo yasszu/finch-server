@@ -1,7 +1,7 @@
 package app
 
 import app.controller.UserController
-import app.di.{AppModule, UserModule}
+import app.module.UserModule
 import com.twitter.finatra.http.HttpServer
 import com.twitter.finatra.http.filters.CommonFilters
 import com.twitter.finatra.http.routing.HttpRouter

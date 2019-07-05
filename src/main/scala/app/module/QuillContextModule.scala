@@ -1,4 +1,4 @@
-package app.di
+package app.module
 
 import com.twitter.inject.TwitterModule
 import com.google.inject.Provides

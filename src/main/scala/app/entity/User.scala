@@ -1,4 +1,4 @@
-package app.model
+package app.entity
 
 case class User(
     id: Long,

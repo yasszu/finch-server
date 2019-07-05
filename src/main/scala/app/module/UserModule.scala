@@ -1,4 +1,4 @@
-package app.di
+package app.module
 
 import app.repository.{UserRepository, UserRepositoryImpl}
 import com.google.inject.Provides
