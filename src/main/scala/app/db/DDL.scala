@@ -1,8 +1,5 @@
-package app.mysql
+package app.db
 
-/**
-  * Created by Yasuhiro Suzuki on 2019-07-01.
-  */
 object DDL {
 
   val createUsersTable =

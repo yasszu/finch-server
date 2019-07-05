@@ -1,7 +1,7 @@
 package app.repository
 
 import app.entity.User
-import app.scheme.Users
+import app.db.scheme.Users
 import com.twitter.util.Future
 import io.getquill._
 import javax.inject.{Inject, Singleton}
