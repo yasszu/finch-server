@@ -1,4 +1,5 @@
 # Example of RESTful API Server with [Finch](https://finagle.github.io/finch/)
+- finatra example is [here](https://github.com/yasszu/finatra-server).
 ## Getting Started
 
 1. Start a MySQL server  
